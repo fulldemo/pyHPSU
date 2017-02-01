@@ -25,10 +25,10 @@ def main(argv):
     output_type = "JSON"
     cloud_plugin = None
     lg_code = None
-    languages = ["EN", "IT", "DE"]
+    languages = ["EN", "IT", "DE"]    
 
     try:
-        opts, args = getopt.getopt(argv,"hc:p:d:v:o:u:l:", ["help", "cmd=", "port=", "driver=", "verbose=", "output_type=", "upload=", "language="])        
+        opts, args = getopt.getopt(argv,"hc:p:d:v:o:u:l:", ["help", "cmd=", "port=", "driver=", "verbose=", "output_type=", "upload=", "language="])
     except getopt.GetoptError:
         print('pyHPSU.py -d DRIVER -c COMMAND')
         print(' ')
@@ -41,11 +41,11 @@ def main(argv):
         print('           -l  --language         set the language to use [%s]' % " ".join(languages) )
         sys.exit(2)
 
-    for opt, arg in opts:        
+    for opt, arg in opts:
         if opt in ("-h", "--help"):
             help = True
         elif opt in ("-d", "--driver"):
-            driver = arg.upper()           
+            driver = arg.upper()
         elif opt in ("-p", "--port"):
             port = arg
         elif opt in ("-c", "--cmd"):
@@ -66,8 +66,13 @@ def main(argv):
             lg_code = arg.upper()   
             if lg_code not in languages:
                 print("Error, please specify a correct language [%s]" % " ".join(languages))
-                sys.exit(9)            
-    
+                sys.exit(9)          
+        elif opt in ("-l", "--language"):
+            lg_code = arg.upper()   
+            if lg_code not in languages:
+                print("Error, please specify a correct language [%s]" % " ".join(languages))
+                sys.exit(9)                  
+
     if verbose == "2":
         locale.setlocale(locale.LC_ALL, '')
         

@@ -88,7 +88,7 @@ def main(argv):
     verbose = "1"
     help = False
     lg_code = None
-    languages = ["EN", "IT", "DE"]
+    languages = ["EN", "IT", "DE"]        
 
     try:
         opts, args = getopt.getopt(argv,"hp:d:v:l:", ["help", "port=", "driver=", "verbose=",  "language="])
@@ -110,11 +110,6 @@ def main(argv):
             port = arg
         elif opt in ("-v", "--verbose"):
             verbose = arg
-        elif opt in ("-l", "--language"):
-            lg_code = arg.upper()   
-            if lg_code not in languages:
-                print("Error, please specify a correct language [%s]" % " ".join(languages))
-                sys.exit(9)        
 
     hpsu = HPSU(driver=driver, port=port, cmd=cmd, lg_code=lg_code)
     HOST, PORT = SocketHost, SocketPort

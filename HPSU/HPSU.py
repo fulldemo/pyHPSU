@@ -38,11 +38,7 @@ class HPSU(object):
         if platform.system() == "Windows":
             self.pathCOMMANDS = "C:/Sec/apps/Apache24/htdocs/domon/waterpump%s" % self.pathCOMMANDS        
         
-        if lg_code is not None:
-            LANG_CODE = lg_code
-        else:  
-            LANG_CODE = locale.getdefaultlocale()[0].split('_')[0].upper()                  
-        
+        LANG_CODE = lg_code if lg_code else locale.getdefaultlocale()[0].split('_')[0].upper()
         hpsuDict = {}
         
         commands_hpsu = '%s/commands_hpsu_%s.csv' % (self.pathCOMMANDS, LANG_CODE)
