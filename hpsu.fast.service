@@ -1,0 +1,8 @@
+[Unit]
+Description=HPSU FAST Daemon
+
+[Service]
+Type=simple
+ExecStart=/home/pi/hpsu.fast.sh
+PIDFile=/tmp/hpsu.fast.pid
+RuntimeMaxSec=8
